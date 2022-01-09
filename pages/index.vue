@@ -1,5 +1,5 @@
 <template>
- <section class="container">
+  <section class="container">
     <h1>Todo App</h1>
     <p><input type="text" name="content"/></p>
     <div>
@@ -7,9 +7,24 @@
       <button>find</button>
     </div>
     <ul>
-      <li>
-        <span>hogehoge</span><span>(2019-03-31 15:00)</span><span>×</span>
+      <li v-for="(todo, index) in todos" :key="index">
+        <span>{{ todo.content }}</span><span>({{ todo.created }})</span><span>×</span>
       </li>
     </ul>
   </section>
-  </template>
+
+</template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  data: () => ({
+    content: ''
+  }),
+  computed: {
+    ...mapState(['todos'])
+  }
+}
+
+</script>
