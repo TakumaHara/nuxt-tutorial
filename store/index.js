@@ -12,9 +12,9 @@ const createStore = () => {
       insert (state, obj) {
         const d = new Date()
         const fmt = d.getFullYear() +
-                            '-' + ('00' + (d.getMonth() + 1)).slice(-2) +
-                            '-' + ('00' + d.getDate()).slice(-2) +
-                            ' ' + ('00' + d.getHours()).slice(-2) +
+                            '年' + (d.getMonth()) +
+                            '月' + ('00' + d.getDate()).slice(-2) +
+                            '日' + ('00' + d.getHours()).slice(-2) +
                             ':' + ('00' + d.getMinutes()).slice(-2)
         state.todos.unshift({
           content: obj.content,

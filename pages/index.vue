@@ -1,9 +1,9 @@
 <template>
   <section class="container">
     <h1>Todo App</h1>
-    <p><input type="text" name="content"/></p>
+    <p><input type="text" name="content" v-model="content" /></p>
     <div>
-      <button>save</button>
+      <button @click="insert">save</button>
       <button>find</button>
     </div>
     <ul>
@@ -24,7 +24,19 @@ export default {
   }),
   computed: {
     ...mapState(['todos'])
+  },
+  methods: {
+    insert () {
+      this.$store.commit('insert', { content: this.content })
+      this.content = ''
+    }
   }
 }
 
 </script>
+<style>
+  .theme--dark.v-application{
+    background: white;
+    color:black;
+  }
+</style>
