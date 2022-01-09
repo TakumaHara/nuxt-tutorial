@@ -4,10 +4,10 @@
     <p><input type="text" name="content" v-model="content" @focus="set_flg" /></p>
     <div>
       <button @click="insert">save</button>
-      <button @click="finds">find</button>
+      <button @click="find">find</button>
     </div>
     <ul>
-      <li v-for="(todo, index) in todos" :key="index">
+      <li v-for="(todo, index) in display_todos" :key="index">
         <span>{{ todo.content }}</span><span>({{ todo.created }})</span><span @click="remove(todo)">×</span>
       </li>
     </ul>
@@ -53,6 +53,9 @@ export default {
         this.find_flg = false
         this.content = ''
       }
+    },
+    remove (todo) {
+      this.$store.commit('remove', todo)
     }
   }
 }
